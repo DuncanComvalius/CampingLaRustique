@@ -1,0 +1,52 @@
+﻿@model CampingLaRustique.Models.ReserveringViewModel
+
+
+@{
+    ViewData["Title"] = "Bevestigen";
+}
+
+<div class="text-center">
+
+    <h1 class="display-4">Bevestig reservering</h1>
+    <p>De details van uw reservering</p>
+
+</div>
+
+<form asp-controller="Reservering" asp-action="Create4" method="post">
+    <div>
+        <h4>Reservering</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.reserverings[0].KlantID)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.reserverings[0].KlantID)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.reserverings[0].PlekID)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.reserverings[0].PlekID)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.reserverings[0].Datum)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.reserverings[0].Datum)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.reserverings[0].Prijs)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.reserverings[0].Prijs)
+            </dd>
+        </dl>
+    </div>
+
+
+
+    <div class="form-group">
+        <input type="submit" name="BtnOpslaan" value='Opslaan' class="btn btn-primary" />
+    </div>
+</form>

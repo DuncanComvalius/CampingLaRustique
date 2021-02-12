@@ -1,0 +1,78 @@
+﻿@model IEnumerable<CampingLaRustique.Models.Klanten>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Klantenlijst</h1>
+
+<p>
+    <a asp-action="Create">Voeg klant toe</a>
+</p>
+
+<form asp-controller="Klanten" asp-action="Index" method="get">
+    <p>
+        Achternaam: <input type="text" name="SearchString" />
+        <input type="submit" value="Zoeken" />
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.KlantID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Voornaam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Achternaam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Woonplaats)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Postcode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefoon)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.KlantID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Voornaam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Achternaam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Woonplaats)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Postcode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefoon)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.KlantID">Aanpassen</a> |
+                <a asp-action="Details" asp-route-id="@item.KlantID">Gegevens</a> |
+                <a asp-action="Delete" asp-route-id="@item.KlantID">Verwijderen</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+<p>
+    <a asp-controller="Camping" asp-action="Index">Naar de kampeerplaatsen</a>
+</p>

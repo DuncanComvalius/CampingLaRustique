@@ -1,0 +1,59 @@
+﻿@model CampingLaRustique.Models.Camping
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Kampeerplek bijwerken</h1>
+
+<h4></h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="PlekID" />
+            <div class="form-group">
+                <label asp-for="Type" class="control-label"></label>
+                <input asp-for="Type" class="form-control" />
+                <span asp-validation-for="Type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Oppervlakte" class="control-label"></label>
+                <input asp-for="Oppervlakte" class="form-control" />
+                <span asp-validation-for="Oppervlakte" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="GratisDouche" /> @Html.DisplayNameFor(model => model.GratisDouche)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="GratisDouche" /> @Html.DisplayNameFor(model => model.Huisdieren)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="GratisDouche" /> @Html.DisplayNameFor(model => model.Elektriciteit)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ligging" class="control-label"></label>
+                <input asp-for="Ligging" class="form-control" />
+                <span asp-validation-for="Ligging" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Opslaan" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Terug naar kampeerplekken</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

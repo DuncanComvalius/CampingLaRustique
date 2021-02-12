@@ -1,0 +1,87 @@
+﻿@model CampingLaRustique.Models.ReserveringViewModel
+@{
+    ViewData["Title"] = "Create3";
+}
+
+<h1>Reservering plaatsen</h1>
+
+<h4>Selecteer een klant</h4>
+<hr />
+<div class="row">
+    <!--   -->
+    <form asp-controller="Reservering" asp-action="Create3" method="post">
+        <!-- <div asp-validation-summary="ModelOnly" class="text-danger"></div> -->
+        <div class="form-group">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.klanten[0].KlantID)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.klanten[0].Voornaam)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.klanten[0].Achternaam)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.klanten[0].Woonplaats)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.klanten[0].Postcode)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.klanten[0].Telefoon)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.klanten)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.KlantID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Voornaam)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Achternaam)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Woonplaats)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Postcode)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Telefoon)
+                            </td>
+                            <td>
+                                @Html.RadioButtonFor(model => model.IsSelected, item.KlantID, new { id = item.KlantID })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="form-group">
+            <input type="submit" name="BtnVorige" value='Vorige' class="btn btn-primary" />
+            <input type="submit" name="BtnVolgende" value='Volgende' class="btn btn-primary" />
+        </div>
+
+    </form>
+</div>
+
+
+
+<div>
+    <div class="col-md-4">
+        <a asp-action="Index">Terug naar reserveringen</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

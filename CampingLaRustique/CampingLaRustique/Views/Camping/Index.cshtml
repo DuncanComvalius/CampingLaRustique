@@ -1,0 +1,93 @@
+﻿@model CampingLaRustique.Models.CampingViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Kampeerplekken</h1>
+
+<p>
+    <a asp-action="Create">Voeg nieuwe kampeerplek toe</a>
+</p>
+
+<form asp-controller="Camping" asp-action="Index" method="get">
+    <p>
+       Filter de types: <select asp-for="Typess" asp-items="Model.Types">
+            <option value="">All</option>
+        </select>
+
+        Zoek de ligging: <input type="text" name="SearchString" />
+        <input type="submit" value="Zoeken" />
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.campings[0].PlekID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.campings[0].Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.campings[0].Oppervlakte)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.campings[0].GratisDouche)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.campings[0].Huisdieren)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.campings[0].Elektriciteit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.campings[0].Ligging)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.campings[0].Prijs)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.campings) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlekID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Oppervlakte)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GratisDouche)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Huisdieren)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Elektriciteit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ligging)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prijs)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PlekID">Aanpassen</a> |
+                <a asp-action="Details" asp-route-id="@item.PlekID">Gegevens</a> |
+                <a asp-action="Delete" asp-route-id="@item.PlekID">Verwijderen</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<p>
+    <a asp-controller="Klanten" asp-action="Index">Naar de klantenlijst</a>
+</p>
